@@ -1,0 +1,89 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Distribution / packaging
+dist/
+build/
+*.egg-info/
+
+# Virtual environments
+venv/
+env/
+ENV/
+.env
+
+# Local development settings
+.env.local
+.env.development.local
+
+# IDE specific files
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Project specific
+*.log
+zeroinput_memory.json
+zeroinput_memory_backup.json
+zeroinput_logs.jsonl
+zeroinput_feedback.json
+zeroinput_patterns.json
+app_encodings.json
+Zer
+
+
+# ML model files
+*.h5
+*.keras
+*.npy
+models/
+
+# Jupyter notebooks
+.ipynb_checkpoints/
+
+# Windows specific
+Thumbs.db
+Desktop.ini
+
+# Credentials and secrets
+*.env
+*.pem
+*.key
+*credentials*
+*secret*
+*token*
+*password*
+*apikey*
+auth.json
+config.json
+
+# User data and history
+*history*.json
+*user*.json
+*profile*.json
+user_data/
+*cache*
+
+# System files
+.DS_Store
+*~
+*.tmp
+*.bak
+*.vsb
+*.vsbackup
+
+# Logs with potentially sensitive info
+debug.log
+error.log
+*.debug
+trace.log
+
+# ZeroInput specific sensitive files
+*_key.py
+ollama_config.json
+user_preferences.json
+*password*.txt
+*connection*.json
