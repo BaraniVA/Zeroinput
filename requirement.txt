@@ -1,0 +1,26 @@
+# Core ML and data processing
+tensorflow==2.15.0
+numpy==1.24.3
+matplotlib==3.8.2
+
+# System monitoring and interaction
+psutil==5.9.6
+pystray==0.19.4
+pillow==10.1.0
+pywin32==306
+
+# Notification system
+win10toast==0.9
+plyer==2.1.0
+
+# API interactions and utilities
+requests==2.31.0
+
+# Optional: Jupyter for experimentation
+jupyter==1.0.0
+
+# Additional dependencies for UI elements
+tkinter  # Usually comes with Python, may need system install
+
+# Local LLM integration
+# No direct pip package for Ollama, it's a separate installation
