@@ -1,10 +1,11 @@
-from agent.integration import run_complete_cycle, synchronize_components
+from agent.integration import run_complete_cycle, synchronize_components, initialize_hotkeys
 import time
 import sys
 import os
 import traceback
 import platform
 import subprocess
+
 
 # Create assets directory if it doesn't exist
 assets_dir = os.path.join(os.path.dirname(__file__), "assets")
@@ -73,6 +74,9 @@ def main():
             print(f"Warning: Could not initialize tray: {e}")
     except Exception as e:
         print(f"Warning: UI initialization error: {e}")
+    
+    # Initialize the hotkey system
+    initialize_hotkeys()
     
     # Initial synchronization
     print("Performing initial synchronization...")

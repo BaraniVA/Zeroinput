@@ -5,8 +5,8 @@ import random
 import re
 from collections import Counter
 from datetime import datetime
-
-
+from agent.action_executor import execute_action
+from agent.hotkey_manager import HotkeyManager
 
 # Add parent directory to path to allow imports
 sys.path.append(os.path.dirname(os.path.dirname(__file__)))
@@ -35,6 +35,9 @@ _last_suggestion = {
     "app_name": None,
     "timestamp": None
 }
+
+# Add global hotkey manager
+_hotkey_manager = HotkeyManager()
 
 def normalize_app_name(app_name):
     """Normalize application names for consistent comparison"""
@@ -117,7 +120,7 @@ def synchronize_components():
 
 def run_complete_cycle():
     """Run a complete cycle of the ZeroInput system"""
-    global _last_suggestion
+    global _last_suggestion, _hotkey_manager
     
     # 1. Get current context
     window = get_active_window_title()
@@ -158,7 +161,7 @@ def run_complete_cycle():
     if not suggestion:
         suggestion = get_smart_suggestion(window, files, processes)
     
-    # Store suggestion for feedback tracking
+    # Store suggestion for feedback tracking and hotkey execution
     if suggestion:
         suggested_app = extract_app_name(window)  # Default to current app
         
@@ -178,6 +181,9 @@ def run_complete_cycle():
             "app_name": suggested_app,
             "timestamp": datetime.now().strftime("%Y-%m-%d %H:%M:%S")
         }
+        
+        # Update hotkey manager with current suggestion
+        _hotkey_manager.update_current_suggestion(suggestion)
     
     return suggestion
 
@@ -306,3 +312,8 @@ def record_suggestion_feedback(current_window):
     
     # Reset last suggestion after recording feedback
     _last_suggestion = {"text": None, "app_name": None, "timestamp": None}
+
+def initialize_hotkeys():
+    """Initialize the hotkey system"""
+    _hotkey_manager.set_action_callback(execute_action)
+    _hotkey_manager.start_listening()
